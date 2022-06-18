@@ -1,0 +1,71 @@
+// Documentation: https://docs-eam.leanix.net/docs/advanced-mode-for-custom-kpis
+// 
+// Percentage KPIs compute two values, which are used as nominator and denominator to calculate a percentage.
+// Next to filters the KPI definition also needs totalFilter, which defines the list of Fact Sheets used for calculating the denominator.
+//
+// Nominator: Applications that are not draft or rejected, and have no TIME classification
+// Denominator: Applications that are not draft or rejected
+
+
+{
+  "filters":[
+    {
+      "type":"factSheetType",
+      "types":[
+        "Application"
+      ]
+    },
+    {
+      "type":"none",
+      "filters":[
+        {
+          "type":"equals",
+          "fieldName":"lxState",
+          "fieldValue":"DRAFT"
+        },
+        {
+          "type":"equals",
+          "fieldName":"lxState",
+          "fieldValue":"REJECTED"
+        }
+      ]
+    },
+    {
+       "type":"none",
+       "filters":[
+          {
+            "type":"equals",
+            "fieldName":"lxTimeClassification"
+          }
+       ]
+    }
+  ],
+  "totalFilter":[
+    {
+       "type":"factSheetType",
+       "types":[
+          "Application"
+       ]
+    },
+    {
+       "type":"none",
+       "filters":[
+          {
+            "type":"none",
+            "filters":[
+              {
+                "type":"equals",
+                "fieldName":"lxState",
+                "fieldValue":"DRAFT"
+              },
+              {
+                "type":"equals",
+                "fieldName":"lxState",
+                "fieldValue":"REJECTED"
+              }
+            ]
+          }
+        ]
+    }
+  ]
+}

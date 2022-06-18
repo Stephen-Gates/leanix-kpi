@@ -1,0 +1,94 @@
+{
+	"filters": [
+		{
+			"type": "factSheetType",
+			"types": [
+				"Application"
+			]
+		},
+		{
+			"type": "none",
+			"filters": [
+				{
+					"type": "equals",
+					"fieldName": "lifecycle",
+					"fieldValue": "endOfLife",
+					"path": "$.currentPhase"
+				}
+			]
+		},
+		{
+			"type": "none",
+			"filters": [
+				{
+					"type": "equals",
+					"fieldName": "lxState",
+					"fieldValue": "DRAFT"
+				},
+				{
+					"type": "equals",
+					"fieldName": "lxState",
+					"fieldValue": "REJECTED"
+				}
+			]
+		},
+		{
+			"type": "greaterEqual",
+			"fieldName": "fsCompletion",
+			"fieldValue": 0.75
+		}
+	],
+	"aggregations": [
+		{
+			"name": "count",
+			"operation": {
+				"type": "count"
+			}
+		}
+	],
+	"fields": [
+		{
+			"name": "fsCompletion",
+			"factSheetType": "Application",
+			"definedAs": {
+				"type": "field",
+				"field": "completionScore",
+				"path": "$.completion"
+			}
+		}
+	],
+	"totalFilter": [
+		{
+			"type": "factSheetType",
+			"types": [
+				"Application"
+			]
+		},
+		{
+			"type": "none",
+			"filters": [
+				{
+					"type": "equals",
+					"fieldName": "lifecycle",
+					"fieldValue": "endOfLife",
+					"path": "$.currentPhase"
+				}
+			]
+		},
+		{
+			"type": "none",
+			"filters": [
+				{
+					"type": "equals",
+					"fieldName": "lxState",
+					"fieldValue": "DRAFT"
+				},
+				{
+					"type": "equals",
+					"fieldName": "lxState",
+					"fieldValue": "REJECTED"
+				}
+			]
+		}
+	]
+}

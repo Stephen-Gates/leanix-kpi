@@ -1,0 +1,61 @@
+{
+	"filters": [
+		{
+			"type": "factSheetType",
+			"types": [
+				"Application"
+			]
+		},
+		{
+			"type": "none",
+			"filters": [
+				{
+					"type": "equals",
+					"fieldName": "lxState",
+					"fieldValue": "DRAFT"
+				},
+				{
+					"type": "equals",
+					"fieldName": "lxState",
+					"fieldValue": "REJECTED"
+				}
+			]
+		},
+		{
+			"type": "forAnyRelation",
+			"relation": "relApplicationToUserGroup",
+			"filters": []
+		}
+	],
+	"aggregations": [
+		{
+			"name": "value",
+			"operation": {
+				"type": "count"
+			}
+		}
+	],
+	"totalFilter": [
+		{
+			"type": "factSheetType",
+			"types": [
+				"Application"
+			]
+		},
+		{
+			"type": "none",
+			"filters": [
+				{
+					"type": "equals",
+					"fieldName": "lxState",
+					"fieldValue": "DRAFT"
+				},
+				{
+					"type": "equals",
+					"fieldName": "lxState",
+					"fieldValue": "REJECTED"
+				}
+			]
+		}
+	]
+}
